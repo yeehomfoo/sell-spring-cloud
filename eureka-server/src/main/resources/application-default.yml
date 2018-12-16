@@ -1,0 +1,17 @@
+eureka:
+  client:
+    # 取消注册到Eureka Server
+    register-with-eureka: false
+  server:
+    # EUREKA MAY BE INCORRECTLY CLAIMING INSTANCES ARE UP WHEN THEY'RE NOT.
+    # RENEWALS ARE LESSER THAN THRESHOLD AND HENCE THE INSTANCES ARE NOT
+    # BEING EXPIRED JUST TO BE SAFE.
+    # Eureka server和client之间采用心跳机制来检测是否存活，如果客户端上线率低于临界值则显示上面的警告
+    # 这是server的自我保护机制，在开发环境可以关闭这个机制，防止开发时调用到不可用的服务(页面显示在线，实际已下线)
+    # 注：生产环境不能关闭自我保护
+    enable-self-preservation: false
+spring:
+  application:
+    name: eureka-server
+server:
+  port: 8761
