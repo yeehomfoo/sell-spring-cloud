@@ -23,4 +23,9 @@ public class ProductInfoSreviceImpl implements ProductInfoSrevice {
     public List<ProductInfo> findUpAll() {
         return productInfoRepository.findProductInfosByProductStatus(ProductStatusEnum.UP.getCode());
     }
+
+    @Override
+    public List<ProductInfo> findList(List<String> productIdList) {
+        return productInfoRepository.findProductInfosByProductIdIn(productIdList);
+    }
 }

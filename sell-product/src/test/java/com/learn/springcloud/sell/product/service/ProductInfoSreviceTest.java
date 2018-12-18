@@ -5,9 +5,8 @@ import lombok.var;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
-import static org.junit.Assert.*;
+import java.util.Arrays;
 
 /**
  * @author yFoo
@@ -21,6 +20,12 @@ public class ProductInfoSreviceTest extends ProductApplicationTests {
     @Test
     public void findUpAll() {
         var productInfos = productInfoSrevice.findUpAll();
+        Assert.assertTrue(productInfos.size() > 0);
+    }
+
+    @Test
+    public void findProductInfos() {
+        var productInfos = productInfoSrevice.findList(Arrays.asList("123457", "1542474133963997924"));
         Assert.assertTrue(productInfos.size() > 0);
     }
 }

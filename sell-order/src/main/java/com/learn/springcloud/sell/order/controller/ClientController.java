@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Arrays;
+
 /**
  * @author yFoo
  * @date 16/12/2018
@@ -45,5 +47,12 @@ public class ClientController {
         String response = productClient.productMsg();
         log.info("response={}", response);
         return response;
+    }
+
+    @GetMapping("/getProductList")
+    public String getProdcutInfo() {
+        var productInfos = productClient.listForOrder(Arrays.asList("123457", "1542474133963997924"));
+        log.info("response={}", productInfos);
+        return "ok";
     }
 }
