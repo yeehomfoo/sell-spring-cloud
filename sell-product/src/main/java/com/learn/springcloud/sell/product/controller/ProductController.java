@@ -1,6 +1,7 @@
 package com.learn.springcloud.sell.product.controller;
 
 import com.learn.springcloud.sell.product.dataobject.ProductInfo;
+import com.learn.springcloud.sell.product.dto.CartDTO;
 import com.learn.springcloud.sell.product.service.ProductCategoryService;
 import com.learn.springcloud.sell.product.service.ProductInfoSrevice;
 import com.learn.springcloud.sell.product.util.ResultVOUtil;
@@ -76,5 +77,10 @@ public class ProductController {
     @PostMapping("/listForOrder")
     public List<ProductInfo> listForOrder(@RequestBody List<String> productIdList) {
         return productInfoSrevice.findList(productIdList);
+    }
+
+    @PostMapping("/decreaseStock")
+    public void decreaseStock(@RequestBody List<CartDTO> cartDTOList) {
+        productInfoSrevice.decreaseStock(cartDTOList);
     }
 }

@@ -1,6 +1,7 @@
 package com.learn.springcloud.sell.order.controller;
 
 import com.learn.springcloud.sell.order.client.ProductClient;
+import com.learn.springcloud.sell.order.dto.CartDTO;
 import lombok.extern.slf4j.Slf4j;
 import lombok.var;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,6 +54,12 @@ public class ClientController {
     public String getProdcutInfo() {
         var productInfos = productClient.listForOrder(Arrays.asList("123457", "1542474133963997924"));
         log.info("response={}", productInfos);
+        return "ok";
+    }
+
+    @GetMapping("/productDecreaseStock")
+    public String productDecreaseStock() {
+        productClient.decreaseStock(Arrays.asList(new CartDTO("123457", 2)));
         return "ok";
     }
 }

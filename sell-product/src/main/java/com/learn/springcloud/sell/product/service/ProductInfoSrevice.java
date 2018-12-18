@@ -1,6 +1,7 @@
 package com.learn.springcloud.sell.product.service;
 
 import com.learn.springcloud.sell.product.dataobject.ProductInfo;
+import com.learn.springcloud.sell.product.dto.CartDTO;
 
 import java.util.List;
 
@@ -23,4 +24,10 @@ public interface ProductInfoSrevice {
      * @return
      */
     List<ProductInfo> findList(List<String> productIdList);
+
+    /**
+     * 扣库存
+     * @param cartDTOList
+     */
+    void decreaseStock(List<CartDTO> cartDTOList);
 }
